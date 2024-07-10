@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Comment: MyString
+  Following: MyString
+  Relationship: MyString
+  Follower: MyString
+  Liked_post: MyString
+
+two:
+  Comment: MyString
+  Following: MyString
+  Relationship: MyString
+  Follower: MyString
+  Liked_post: MyString

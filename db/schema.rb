@@ -10,7 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_07_09_133721) do
+ActiveRecord::Schema.define(version: 2024_07_10_112619) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "body"
+    t.integer "user"
+    t.integer "post", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "liked_posts", force: :cascade do |t|
+    t.integer "user", null: false
+    t.integer "post", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "subject_type"
+    t.integer "subject_id"
+    t.integer "user_id"
+    t.integer "action_type", null: false
+    t.boolean "checked"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subject_type", "subject_id"], name: "index_notifications_on_subject"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "body", null: false
+    t.integer "user", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,4 +70,5 @@ ActiveRecord::Schema.define(version: 2024_07_09_133721) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "notifications", "users"
 end

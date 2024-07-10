@@ -1,0 +1,2 @@
+class LikedPost < ApplicationRecord
+end
