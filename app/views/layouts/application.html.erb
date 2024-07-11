@@ -13,10 +13,10 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #21A0DB;">
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #21A0DB;">
         <div class="container">
           <span>
-            <%= link_to root_path do %>
+            <%= link_to root_path, class: 'font-color' do %>
              <i class="fa-solid fa-volleyball"></i> Volleyball_and_you
              <% end %>
           </span>
@@ -30,15 +30,15 @@
               <% if user_signed_in? %>
 
               <li class="nav-item">
-                <%= link_to "Home", user_path(current_user.id), class: 'text-white' %>
+                <%= link_to "Home", user_path(current_user.id), class: 'nav-link text-lite' %>
               </li>
 
               <li class="nav-item">
-                <%= link_to "My-page", post_path, class: 'nav-link text-lite'%>
+                <%= link_to "My-page", post_path, class: 'nav-link text-lite' %>
               </li>
 
               <li class="nav-item">
-                <%= link_to "New-post", post_path, class: 'nav-link text-lite'%>
+                <%= link_to "New-post", post_path, class: 'nav-link text-lite' %>
               </li>
 
               <li class="nav-item">
@@ -48,23 +48,23 @@
               <% else %>
 
               <li class="nav-item">
-                <%= link_to "Home", root_path, class: 'nav-link text-lite' %>
+                <%= link_to "Home", root_path, class: 'nav-link text-lite font-color' %>
               </li>
               
               <li class="nav-item">
-                <%= link_to "About", about_path, class: 'nav-link text-lite' %>
+                <%= link_to "About", about_path, class: 'nav-link text-lite font-color' %>
               </li>
               
               <li class="nav-item">
-                <%= link_to "Sign-up", new_user_registration_path, class: 'nav-link text-lite' %>
+                <%= link_to "Sign-up", new_user_registration_path, class: 'nav-link text-lite font-color' %>
               </li>
               
               <li class="nav-item">
-                <%= link_to "Log-in", user_session_path, class: 'nav-link text-lite' %>
+                <%= link_to "Log-in", user_session_path, class: 'nav-link text-lite font-color' %>
               </li>
               
               <li class="nav-item">
-                <%= link_to "Guest-log-in", users_guest_sign_in_path, class: 'nav-link text-lite', method: :post %>
+                <%= link_to "Guest-log-in", users_guest_sign_in_path, class: 'nav-link text-lite font-color', method: :post %>
               </li>
               <% end %>
             </ul>
