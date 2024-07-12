@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post=Post
+    @post=Post.new
   end
 
   def index

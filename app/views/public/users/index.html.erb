@@ -1,0 +1,19 @@
+<div id="sidebar-wrapper" class="sidebar-bg">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="sidebar-nav">
+        <li class="liked_list">
+          <%= link_to liked_posts_path(current_user.id) do %>
+           <i class="fa-regular fa-heart"></i>
+           <% end %>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+  
+</div>
+      <h1>マイページ</h1>
+        <%= image_tag user.get_profile_image(100,100) %>
+         
+

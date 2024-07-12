@@ -1,4 +1,4 @@
-class RegistrationsController < Devise::RegistrationsController
+class Public::RegistrationsController < Devise::RegistrationsController
   
   def new
     super
