@@ -1,2 +1,2 @@
-class LikedPostsController < ApplicationController
+class Public::LikedPostsController < ApplicationController
 end

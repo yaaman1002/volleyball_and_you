@@ -1,19 +1,52 @@
-class PostsController < ApplicationController
+class Public::PostsController < ApplicationController
   def new
     @post=Post.new
   end
   
   def create
-    @post=Post.new
+    @post=Post.new(post_params)
+    @post.user_id=current_user.id
+    @user=current_user
+    @posts=Post.all
+    if @post.save
+      redirect_to posts_path
+    else
+      render :new
+    end
   end
 
   def index
+    @post=Post.new
     @posts=Post.all
+    @user=current_user
   end
 
   def show
+    @post=Post.find(params[:id])
   end
 
   def edit
+    @post=Post.find(params[:id])
+  end
+  
+  def update
+    @post=Post.find(params[:id])
+    if @book.update(post_params)
+      redirect_to posts_path
+    else 
+      render :edit
+    end
+  end
+  
+  def destroy
+    @post=Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
+  end
+  
+  private
+  
+  def post_params
+    params.require(:post).permit(:image)
   end
 end

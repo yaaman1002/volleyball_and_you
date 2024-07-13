@@ -1,2 +1,2 @@
-class PostImagesController < ApplicationController
+class Public::PostImagesController < ApplicationController
 end

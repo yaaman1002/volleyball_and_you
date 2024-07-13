@@ -1,2 +1,2 @@
-class MessagesController < ApplicationController
+class Public::MessagesController < ApplicationController
 end
