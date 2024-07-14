@@ -4,7 +4,8 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post=Post.new
+    @post=Post.new(post_params)
+    @post.user_id=current_user.id
     @user=current_user
     @posts=Post.all
     if @post.save
@@ -20,7 +21,8 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post=Post.new
+    @post=Post.find(params[:id])
+    @user=@post.user
   end
 
   def edit
@@ -45,6 +47,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:introduction, :title, :body, :images)
+    params.require(:post).permit(:title, :body, :images)
   end
 end

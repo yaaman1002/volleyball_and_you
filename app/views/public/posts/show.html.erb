@@ -1,1 +1,13 @@
-<h1>投稿詳細ページ</h1>
+<div class="col-md-8 offset-md-1">
+  <h1>投稿詳細ページ</h1>
+    <p><%= link_to user_path(@user.id) do %></p>
+    <p><%= image_tag @post.user.get_profile_image(100,100) %></p>
+    <p><%= @post.name %></p>
+        <% end %>
+    <p><%= link_to @post.title, post_path(@post.id) %></p>
+    <p><%= @post.body %></p>
+    <p><% if @post.user==current_user %>
+        <%= link_to '投稿編集', edit_post_path(@post), class: 'btn btn-sm btn-success' %></p>
+    <p><%= link_to '投稿削除', post_path(@post), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm"=>"本当に消しますか？" %></p>
+        <% end %>
+</div>

@@ -5,7 +5,11 @@ Rails.application.routes.draw do
       resource :liked_posts, only:[:create, :destroy, :index]
       resources :comments, only:[:create, :destroy]
     end
-    resources :users, only:[:index, :show, :edit, :update]
+    resources :users, only:[:index, :show, :edit, :update] do
+      member do
+        get :likes
+      end
+    end
   end
 
   devise_scope :user do
@@ -15,7 +19,5 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   get 'homes/about', as: 'about'
-
-  get 'posts/new_post', to: 'posts#new'
 
 end

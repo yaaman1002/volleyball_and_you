@@ -41,16 +41,16 @@ ActiveRecord::Schema.define(version: 2024_07_13_081857) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "body"
-    t.integer "user"
-    t.integer "post", null: false
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "liked_posts", force: :cascade do |t|
-    t.integer "user", null: false
-    t.integer "post", null: false
+    t.integer "user_id"
+    t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -74,10 +74,9 @@ ActiveRecord::Schema.define(version: 2024_07_13_081857) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "body", null: false
-    t.text "introduction", null: false
-    t.integer "user_", null: false
+    t.string "title"
+    t.string "body"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

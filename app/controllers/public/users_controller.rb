@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :set_user, only: [:likes]
   
   def index
     @users=User.all
@@ -17,13 +18,22 @@ class Public::UsersController < ApplicationController
   def update
     @user=User.find(params[:id])
       if @user.update(user_params)
-        redirect_to users_path
+        redirect_to user_path(@user.id)
       else
         render :edit
       end
   end
   
-  private
+  def likes
+    likes=Like.where(user_id: @user.id).pluck(:post_id)
+    @like_posts=Post.find(likes)
+  end
+  
+private
+  
+  def set_user
+    @user=User.find(params[:id])
+  end
   
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)

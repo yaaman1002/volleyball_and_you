@@ -24,4 +24,8 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  def liked_posted_by?(post_id)
+    liked_post.where(post_id: post_id).exists?
+  end
 end
