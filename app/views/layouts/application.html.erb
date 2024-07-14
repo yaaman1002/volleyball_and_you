@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/f9b17be825.js" crossorigin="anonymous"></script>
   </head>
@@ -30,7 +30,7 @@
               <% if user_signed_in? %>
 
               <li class="nav-item">
-                <%= link_to "Home", user_path(current_user.id), class: 'nav-link text-lite' %>
+                <%= link_to "Home", root_path, class: 'nav-link text-lite' %>
               </li>
 
               <li class="nav-item">
@@ -38,7 +38,7 @@
               </li>
 
               <li class="nav-item">
-                <%= link_to "New-post", posts_path, class: 'nav-link text-lite' %>
+                <%= link_to "New-post", posts_new_post_path, class: 'nav-link text-lite' %>
               </li>
 
               <li class="nav-item">

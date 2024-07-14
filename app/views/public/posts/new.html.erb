@@ -1,1 +1,22 @@
-投稿ページ
+<h1 class="mt-5">New_post</h1>
+  <%= form_with model: @post do |f| %>
+    <div>
+      <%= f.label :title, "タイトル" %><br >
+      <%= f.text_field :title %>
+     </div>
+    
+    <div>
+        <%= f.label :body, "本文" %><br >
+        <%= f.text_area :body %>
+    </div>
+    
+    <div>
+        <%= f.label :images, "画像" %><br >
+        <%= f.file_field :images, accept: "image/*", multiple: true %><br >
+    </div>
+    
+    <div>
+        <%= f.submit "new_post" %>
+    </div>
+    
+    <% end %>
