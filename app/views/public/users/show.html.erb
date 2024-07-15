@@ -1,4 +1,24 @@
-<div class="col-md-8 offset-md-1">
+<div class="col-md-8 ml-4 mt-4">
   <h1>ユーザー詳細</h1>
-  　 
+  　 <table>
+  　   <thead>
+  　     <tr>
+  　       <th>プロフィール</th>
+  　       <th>タイトル</th>
+  　       <th colspan="2"><th>
+  　     </tr>
+  　     <tbody>
+  　       <%= @posts.each do |posts| %>
+  　        <tr>
+                  <td><%= link_to user_path(@user) do %>
+                       <%= image_tag posts.user.get_profile_image(100,100) %>
+                       <% end %>
+                  </td>
+                  <td><%= link_to posts.title, post_path(posts.id) %></td>
+                  <td><%= posts.body %></td>
+               </tr>
+               <% end %>
+        </tbody>
+  　   </thead>
+  　 </table>
 </div>

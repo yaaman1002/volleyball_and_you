@@ -1,25 +1,28 @@
-サイドバー
+<div class="col-md-2"></div>
+  <nav>
+    <ul class="side-bar">
+      
+    </ul>
+  </nav>
 いいね一覧
 フォロー一覧
 （バレーボール基礎知識情報）
 
-<div class="col-md-4 ml-4 mt-4">
-      <h1>My_page</h1>
+<div class="col-md-4 ml-4">
+      <h1 class="bg-lite">My_page</h1>
           <%= image_tag @user.get_profile_image(100,100) %>
             <table class="table">
               <tbody>
                 <tr></tr>
-                 <tr><th>name</th>
+                 <tr><th class="bg-lite">name</th>
                      <td><%= @user.name %></td></tr>
-                 <tr><th>introduction</th>
+                 <tr><th class="bg-lite">introduction</th>
                      <td><%= @user.introduction %></td></tr>
               </tbody>
             </table>
-            <div class="row">
               <%= link_to edit_user_path(@user), class: 'btn btn-outline-primary' do %>
                 <i class="fa-solid fa-user-gear"></i>
               <% end %>
-            </div>
         </div>
     <div class="col-md-7 ml-4 mt-6">
        <table class="table table-striped">
