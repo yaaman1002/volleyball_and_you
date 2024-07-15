@@ -6,7 +6,6 @@
 
 body{
   line-height: 2.0;
-  background-image: url("<%= asset_path('volleyball_and_you_background2.jpeg') %>") !important;
 }
 
 .cantainer{
@@ -21,6 +20,10 @@ body{
   background-color: #ffbe00;
 }
 
-.font-color-red {
+.font-color {
   color: #fff !important;
+}
+
+.actions{
+  margin-top: 1rem;
 }

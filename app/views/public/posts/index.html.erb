@@ -3,7 +3,7 @@
 フォロー一覧
 （バレーボール基礎知識情報）
 
-<div class="col-md-8 offset-md-1">
+<div class="col-md-4 ml-4 mt-4">
       <h1>My_page</h1>
           <%= image_tag @user.get_profile_image(100,100) %>
             <table class="table">
@@ -16,11 +16,40 @@
               </tbody>
             </table>
             <div class="row">
-              <%= link_to edit_user_path(@user),class: 'btn btn-outline-secondary btn-block' do %>
+              <%= link_to edit_user_path(@user), class: 'btn btn-outline-primary' do %>
                 <i class="fa-solid fa-user-gear"></i>
               <% end %>
             </div>
-          </div>
         </div>
-       </div>
+    <div class="col-md-7 ml-4 mt-6">
+       <table class="table table-striped">
+         <thead>
+         <tr>
+          <th></th>
+          <th>タイトル</th>
+          <th>投稿内容</th>
+          <th colspan="3"></th>
+         </tr>
+        <tbody>
+           <% @posts.each do |posts| %>
+              <tr>
+                <td>
+                  <%= link_to user_path(@user) do %>
+                  <%= image_tag posts.user.get_profile_image(100,100) %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to posts.title, user_path(@user) %>
+                </td>
+                <td>
+                  <%= link_to posts.body %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </thead>
+        </table>
+      </div>
+        
+      
     
