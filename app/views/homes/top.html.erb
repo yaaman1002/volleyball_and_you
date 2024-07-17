@@ -1,18 +1,30 @@
 <%= flash[:notice] %>
-<div class="container">
-    <div class="row">
-      <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
-        <h1>Let's enjoy the volleyball together!!</h1>
-        
-        <div class="btn-wrapper col-10 mx-auto">
-              <div class="row">
-                <p><button type="button" class="btn sign_in btn-custom"><%= link_to "Log in", new_user_session_path %></button></p>
-              </div>
-              <div class="row">
-                <p><button type="btn sign_up btn-custom2"><%= link_to "Sign up", new_user_registration_path %></button></p>
-              </div>
-              
-            </div>
+
+<div class="aboutback">
+    <div class="square">
+        <h2 class="text-center mt-3">最新の投稿</h2>
       </div>
+      <div class="container card mt-3 mb-3" style="background-color: #cee4ae;">
+        <div class="row">
+          <% @new_posts.each do |posts| %>
+            <div class="col-md-3">
+              <%= image_tag(posts.get_image, class: "card-img-top", size: "300x300") %>
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <h6 class="list-group-item"><%= posts.created_at.strftime('%Y/%m/%d') %></h6>
+                <h5 class="list-group-item font-weight-bold"><%= posts.title %></h5>
+                <h6 class="list-group-item"><%= posts.body.truncate(100) %></h6>
+                <h6 class="list-group-item"><%= posts.user.name %></h6>
+              </div>
+            </div>
+            <% end %>
+        </div>
+      </div>
+            <div class="text-center mt-4">
+              <p><button type="button" class="btn btn-outline-primary"><%= link_to "Log in", new_user_session_path %></button></p>
+              </div>
+              <div class="text-center mt-4">
+                <p><button type="button" class="btn btn-outline-primary"><%= link_to "Sign up", new_user_registration_path %></button></p>
+                </div>
     </div>
-  </div>

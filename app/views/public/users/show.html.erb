@@ -1,21 +1,29 @@
 <div class="col-md-8 ml-4 mt-4">
   <h1>ユーザー詳細</h1>
-  　 <table>
-  　   <thead>
+     <%= image_tag @user.get_profile_image(100,100) %>
+            <table class="table">
+              <tbody>
+                <tr></tr>
+                 <tr><th class="bg-lite">name</th>
+                     <td><%= @user.name %></td></tr>
+                 <tr><th class="bg-lite">introduction</th>
+                     <td><%= @user.introduction %></td></tr>
+              </tbody>
+            </table>
   　     <tr>
   　       <th>プロフィール</th>
   　       <th>タイトル</th>
   　       <th colspan="2"><th>
   　     </tr>
   　     <tbody>
-  　       <%= @posts.each do |posts| %>
+  　       <% @user.each do |user| %>
   　        <tr>
                   <td><%= link_to user_path(@user) do %>
-                       <%= image_tag posts.user.get_profile_image(100,100) %>
+                       <%= image_tag user.get_profile_image(100,100) %>
                        <% end %>
                   </td>
-                  <td><%= link_to posts.title, post_path(posts.id) %></td>
-                  <td><%= posts.body %></td>
+                  <td><%= link_to user.title, post_path(posts.id) %></td>
+                  <td><%= user.body %></td>
                </tr>
                <% end %>
         </tbody>
