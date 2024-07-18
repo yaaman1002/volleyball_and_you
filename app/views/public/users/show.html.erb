@@ -1,6 +1,8 @@
-<div class="col-md-8 ml-4 mt-4">
-  <h1>ユーザー詳細</h1>
+<div class="aboutback row">
+  <div class="square col-md-4" style="background-color: #cee4ae;">
+   <h1>ユーザー詳細</h1>
      <%= image_tag @user.get_profile_image(100,100) %>
+      <div class="container card mt-3 mb-3">
             <table class="table">
               <tbody>
                 <tr></tr>
@@ -10,23 +12,22 @@
                      <td><%= @user.introduction %></td></tr>
               </tbody>
             </table>
-  　     <tr>
-  　       <th>プロフィール</th>
-  　       <th>タイトル</th>
-  　       <th colspan="2"><th>
-  　     </tr>
-  　     <tbody>
-  　       <% @user.each do |user| %>
-  　        <tr>
-                  <td><%= link_to user_path(@user) do %>
-                       <%= image_tag user.get_profile_image(100,100) %>
-                       <% end %>
-                  </td>
-                  <td><%= link_to user.title, post_path(posts.id) %></td>
-                  <td><%= user.body %></td>
-               </tr>
+          </div>
+        </div>
+      
+       <div class="card col-md-7 offset-md-1" style="background-color: #f5f5f5;">
+             <div class="row">
+                <% @posts.each do |posts| %>
+                  <div class="col-md-3">
+                    <%= image_tag(posts.get_image, size: "100x100") %>
+                  </div>
+                      <div class="col-md-7">
+        　               <div class="card-body">
+                          <h5 class="list-group-item font-weight-bold"><%= posts.title %></h5>
+                          <h6 class="list-group-item"><%= posts.body %></h6>
+                        </div>
+                     </div>
                <% end %>
-        </tbody>
-  　   </thead>
-  　 </table>
-</div>
+        </div>
+      </div>
+    </div>

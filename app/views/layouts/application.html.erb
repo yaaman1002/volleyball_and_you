@@ -74,12 +74,32 @@
       </nav>
      </header>
     <main>
-    <%= yield %>
+      <% if current_page?(root_path) %>
+        <%= yield %>
+      <% else %>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3">
+              <p>ここに常に表示させたいやつ</p>
+              <p>こんなかんじ？</p>
+              <div>
+                いろいろ
+              </div>
+              <div>
+                さまざま
+              </div>
+            </div>
+            <div class="col-md-9">
+              <%= yield %>
+            </div>
+          </div>      
+        </div>
+      <% end %>
     </main>
   </body>
 
-    <footer>
-      <div class="container mt-5">
+    <footer class="text-center" style="background-color: #afafb0;">
+      <div class="container">
         <div class="row">
           <div class="mx-auto">
             <p>©Volleyball_and_you</p>

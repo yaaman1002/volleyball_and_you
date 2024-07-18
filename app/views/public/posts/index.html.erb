@@ -9,11 +9,12 @@
 （バレーボール基礎知識情報）
 
 <div class="aboutback">
-  <div class="text-center mb" style="background-color: #cee4ae;">
-      <h1 class="text-center">My_page</h1>
-          <%= image_tag @user.get_profile_image(100,100) %>
-            <table class="table table-striped col-md-5">
-              <tbody class="text-center">
+  <div class="square col-md-4 text-center ml-4 mt-3" style="background-color: #cee4ae;">
+   <h1>My_Page</h1>
+     <%= image_tag @user.get_profile_image(100,100) %>
+      <div class="container card mt-3 mb-3">
+            <table class="table">
+              <tbody>
                 <tr></tr>
                  <tr><th class="bg-lite">name</th>
                      <td><%= @user.name %></td></tr>
@@ -24,7 +25,11 @@
               <%= link_to edit_user_path(@user), class: 'btn btn-outline-primary' do %>
                 <i class="fa-solid fa-user-gear"></i>
               <% end %>
-       </div>
+              <%= link_to edit_post_path(@post), class: 'btn btn-outline-primary' do %>
+                <i class="fa-solid fa-file-pen"></i>
+              <% end %>
+         </div>
+        </div>
            <div class="text-center">
              <table class="table table-striped col-md-7">
                <thead>

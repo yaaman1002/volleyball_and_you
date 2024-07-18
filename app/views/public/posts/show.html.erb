@@ -1,8 +1,8 @@
 <div class="col-md-8 offset-md-1">
   <h1>投稿詳細ページ</h1>
     <p><%= link_to user_path(@user.id) do %></p>
-    <p><%= image_tag @post.user.get_profile_image(100,100) %></p>
-    <p><%= @post.name %></p>
+    <p><%= image_tag @user.get_profile_image(100,100) %></p>
+    <p><%= @user.name %></p>
         <% end %>
     <p><%= link_to @post.title, post_path(@post.id) %></p>
     <p><%= @post.body %></p>

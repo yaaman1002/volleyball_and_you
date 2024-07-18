@@ -9,17 +9,12 @@ body{
 }
 
 main{
-  background-color: #ffff80 !important;
-}
-
-.sidebar-left{
   background-image: url("../images/bi4.jpeg");
-  width: 3rem;
-}
-
-.sidebar-right{
-  background-image: url("../images/bi4.jpeg");
-  width: 3rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
 }
 
 .cantainer{
@@ -32,4 +27,14 @@ main{
 
 .actions{
   margin-top: 1rem;
+}
+
+.aboutback {
+  /** 背景に影を付けたり、半透明な背景色をつけたり **/
+  
+  //background-color: #80808042;
+  //width: 80%;
+  //margin: 0 auto;
+  //box-shadow: 10px 5px 5px #000000a3;
+
 }

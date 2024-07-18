@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2024_07_13_081857) do
     t.string "kana_last"
     t.string "kana_first"
     t.string "title"
+    t.string "body"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
