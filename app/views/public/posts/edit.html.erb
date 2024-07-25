@@ -1,2 +1,19 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class="aboutback text-center" style="background-color: #ABE1FA;">
+    <div class="row">
+      <div class="col-md-7">
+        <%= form_with model: @post do |f| %>
+        
+         <h4>タイトル</h4>
+         <%= f.text_field :title %>
+         
+         <h4>本文</h4>
+         <%= f.text_area :body %>
+         
+        <p><%= f.submit '投稿内容の更新' %></p>
+         
+         <p><%= link_to "一覧へ戻る", posts_path %></p>
+         
+         <% end %>
+      </div>
+    </div>
+</div>    
