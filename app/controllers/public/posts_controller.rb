@@ -31,7 +31,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post=Post.find(params[:id])
-    if @book.update(post_params)
+    if @post.update(post_params)
       redirect_to posts_path
     else
       render :edit
