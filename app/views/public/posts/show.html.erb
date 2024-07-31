@@ -1,13 +1,29 @@
-<div class="col-md-8 offset-md-1">
-  <h1>投稿詳細ページ</h1>
+<div class="container">
+ <div class="row"　style="background-color: #F9C1CF;">
+  <div class="col-md-3 ml-2">
+   <h1>投稿詳細ページ</h1>
     <p><%= link_to user_path(@user.id) do %></p>
     <p><%= image_tag @user.get_profile_image(100,100) %></p>
     <p><%= @user.name %></p>
         <% end %>
-    <p><%= link_to @post.title, post_path(@post.id) %></p>
-    <p><%= @post.body %></p>
-    <p><% if @post.user==current_user %>
-        <%= link_to '投稿編集', edit_post_path(@post), class: 'btn btn-sm btn-success' %></p>
-    <p><%= link_to '投稿削除', post_path(@post), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm"=>"本当に消しますか？" %></p>
-        <% end %>
+    </div>
+　</div>
+    <div class="row" style="background-color: #F9C1CF;">
+      <div class="col-md-8 offset-md-1">
+        <p><%= link_to @post.title, post_path(@post.id) %></p>
+        <p><%= @post.body %></p>
+        <p>コメント数：<span id="comment_count"><%= @post.comments.count %></span></p>
+        <p id="comments">
+            <%= render "public/comments/commentshow", post: @post %>
+        </p>
+        <p id ="comment-form">
+            <%= render "public/comments/form", post: @post, comment: @comment %>
+        </p>
+        <p><% if @post.user==current_user %>
+            <%= link_to '投稿編集', edit_post_path(@post), class: 'btn btn-sm btn-success' %></p>
+        <p><%= link_to '投稿削除', post_path(@post), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm"=>"本当に消しますか？" %></p>
+            <% end %>
+      </div>
+  </div>
 </div>
+

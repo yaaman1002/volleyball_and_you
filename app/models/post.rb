@@ -13,17 +13,15 @@ class Post < ApplicationRecord
     images.first
   end
   
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @post = Post.where("title LIKE?","#{word}")
-    elsif search == "forward_match"
-      @post = Post.where("title LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @post = Post.where("title LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @post = Post.where("title LIKE?","%#{word}%")
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Post.where(title: content)
+    elsif method == 'forward'
+      Post.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      Post.where('name LIKE ?', '%' + content)
     else
-      @book = Post.all
+      Post.where('name LIKE ?', '%' + content + '%')
     end
   end
 

@@ -1,22 +1,23 @@
-<h2>Results index</h2>
-
-<table class="table table-hover table-inverse">
+<h2>検索結果</h2>
   
-  <% if @range == "User" %>
+  <% if @model == "User" %>
+    <h3>Users search for "<%= @content %>"</h3>
+      <table>
+        <tbody>
+          <% @records.each do |record| %>
+          <tr>
+            <td><%= record.name %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      
+  <% elsif @model == 'book' %>
+    <h3>投稿検索結果 "<%= @content %>"</h3>
     <tbody>
-      <% @users.each do |user| %>
+      <% @records.each do |record| %>
         <tr>
-          <td><%= user.name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% else %>
-  
-    <tbody>
-      <% @posts.each do |one_post| %>
-        <tr>
-          <td><%= one_post.title %></td>
-          <td><%= one_post.body %></td>
+          <td><%= record.title %></td>
+          <td><%= record.body %></td>
         </tr>
       <% end %>
     </tbody>
