@@ -1,25 +1,26 @@
 <h2>検索結果</h2>
   
-  <% if @model == "User" %>
+  <% if @model == "user" %>
     <h3>Users search for "<%= @content %>"</h3>
-      <table>
-        <tbody>
-          <% @records.each do |record| %>
-          <tr>
-            <td><%= record.name %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      
-  <% elsif @model == 'book' %>
-    <h3>投稿検索結果 "<%= @content %>"</h3>
-    <tbody>
-      <% @records.each do |record| %>
+    <table>
+      <tbody>
+        <% @records.each do |record| %>
         <tr>
-          <td><%= record.title %></td>
-          <td><%= record.body %></td>
+          <td><%= record.name %></td>
         </tr>
       <% end %>
-    </tbody>
+      </tbody>
+    </table>
+  <% elsif @model == 'post' %>
+    <h3>投稿検索結果 "<%= @content %>"</h3>
+    <table>
+      <tbody>
+        <% @records.each do |record| %>
+          <tr>
+            <td><%= record.title %></td>
+            <td><%= record.body %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   <% end %>
-</table>
