@@ -1,2 +1,2 @@
-$('#comments').html("<%= j(render "comments/commentshow", post: @post) %>");
+$('#comments').html("<%= j(render "/public/comments/commentshow", post: @post) %>");
 $('#comment_count').html("<%= @post.comments.count %>")

@@ -82,7 +82,10 @@
       <div class="container">
         <div class="row">
           <div class="mx-auto">
-            <p>©Volleyball_and_you</p>
+              <% if current_user.try(:admin?) %>
+                <%= link_to '管理者ログイン', rails_admin_path %>
+              <% end %>
+                <p>©Volleyball_and_you</p>
           </div>
         </div>
       </div>
