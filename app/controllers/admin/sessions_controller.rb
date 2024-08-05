@@ -2,9 +2,9 @@
 
 class Admin::SessionsController < Devise::SessionsController
   layout 'admin'
-  
+
   protected
-  
+
   def after_sign_in_path_for(resource)
     admin_dashboards_path
   end
@@ -34,4 +34,4 @@ end
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-end
+# end
