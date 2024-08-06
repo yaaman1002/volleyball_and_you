@@ -1,14 +1,34 @@
+<%= flash[:notice] %>
 <div class="container text-center" style="background-color: #FFEF6C;">
   <div class="row">
-      <h1>全ユーザー一覧</h1>
-        <ul>
+    <h1>全ユーザー一覧</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ユーザー名</th>
+          <th>メールアドレス </th>
+          <th></th>
+          <th colspan="3"></th>
+        </tr>
+        <tbody>
           <% @users.each do |user| %>
-            <li>
-              <%= user.name %> - <%= user.email %>
-              </li>
-              <%= link_to '編集', edit_admin_user_path(user), class: 'btn btn-sm btn-success' %>
-             <%= link_to '削除', admin_user_path(user), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: '本当に削除しますか？'} %>
-            <% end %>
-        </ul>
-    </div>
+            <tr>
+              <td>
+                 <%= user.name %> 
+              </td>
+              <td>
+                 <%= user.email %>
+              </td>
+              <td>
+                 <%= link_to '編集', edit_admin_user_path(user), class: 'btn btn-sm btn-success' %>
+              </td>
+              <td>
+                  <%= link_to '削除', admin_user_path(user), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: '本当に削除しますか？'} %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </thead>
+    </table>
   </div>
+ </div>
