@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboards', to: 'dashboards#index'
-    get 'dashboards', to: 'dashboards#edit'
-  end
+    resources :users, only: [:destroy, :edit, :update]
+    end
 
   scope module: :public do
     resources :posts, only:[:new, :create, :index, :show, :edit, :destroy, :update] do
@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   get 'homes/about', as: 'about'
-
-  get "/search", to: "searches#search"
+  get 'search', to: 'searches#search'
+  get 'users/unsubscrible', to: 'users#unsubscrible'
+  patch 'users/withdraw', to: 'users#withdraw'
+  
 end

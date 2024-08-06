@@ -1,14 +1,14 @@
-<div class="container">
+<div class="container text-center" style="background-color: #FFEF6C;">
   <div class="row">
-    <div class="text-center" style='background-color: ##ABE1FA;'>
       <h1>全ユーザー一覧</h1>
         <ul>
           <% @users.each do |user| %>
             <li>
-              <%= @user.name %> - <%= user.email %>
-              <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？'} 
-            </li>
+              <%= user.name %> - <%= user.email %>
+              </li>
+              <%= link_to '編集', edit_admin_user_path(user), class: 'btn btn-sm btn-success' %>
+             <%= link_to '削除', admin_user_path(user), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: '本当に削除しますか？'} %>
+            <% end %>
         </ul>
     </div>
   </div>
-</div>
