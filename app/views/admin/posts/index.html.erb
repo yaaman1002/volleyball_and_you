@@ -1,0 +1,27 @@
+<div class="about" style="background-color: #FFE8AF;">
+  <div class="square">
+    <h2 class="text-center">投稿一覧ページ</h2>
+    </div>
+     <div class="container card mt-3 mb-3" style="background-color: #FFFEF6;">
+      <div class="row">
+    　　<% @posts.each do |one_post| %>
+          <div class="col-md-2">
+            <%= image_tag(one_post.get_image, size: "100x100") %>
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+                <h6 class="list-group-item"><%= one_post.created_at.strftime('%Y/%m/%d') %></h6>
+                <h5 class="list-group-item font-weight-bold"><%= one_post.title %></h5>
+                <h6 class="list-group-item"><%= one_post.body.truncate(100) %></h6>
+                <h6 class="list-group-item"><%= one_post.user.name %></h6>
+                <%= link_to "編集する", edit_admin_post_path(one_post), class: 'btn btn-outline-primary' %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>    
+            
+          
+    
+  

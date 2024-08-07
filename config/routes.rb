@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboards', to: 'dashboards#index'
     resources :users, only: [:destroy, :edit, :update]
+    resources :posts, only: [:index, :destroy, :edit, :update]
+    resources :comments, only: [:destroy]
     end
 
   scope module: :public do
@@ -37,5 +39,5 @@ Rails.application.routes.draw do
   get 'search', to: 'searches#search'
   get 'users/unsubscrible', to: 'users#unsubscrible'
   patch 'users/withdraw', to: 'users#withdraw'
-  
+
 end
