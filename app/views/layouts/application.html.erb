@@ -45,6 +45,20 @@
               <li class="nav-item">
                 <%= link_to "Log-out", destroy_user_session_path, method: :delete, class: 'nav-link text-lite' %>
               </li>
+              
+              <% elsif admin_signed_in? %>
+                  
+                <li class="nav-item">
+                  <%= link_to "ユーザー一覧", admin_dashboards_path, class: 'nav-link text-lite' %>
+                </li>
+                
+                <li class="nav-item">
+                  <%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-lite' %>
+                </li>
+                
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-lite' %>
+                </li>
 
               <% else %>
 
@@ -68,6 +82,9 @@
                 <%= link_to "Guest-log-in", users_guest_sign_in_path, class: 'nav-link text-lite font-color', method: :post %>
               </li>
               <% end %>
+              
+
+
             </ul>
          </div>
         </div>
