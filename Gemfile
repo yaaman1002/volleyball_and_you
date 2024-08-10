@@ -66,6 +66,3 @@ gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
 gem 'jquery-rails'
-gem 'rails_admin', '~> 3.0'
-gem 'cancancan'
-gem 'rails-i18n'
