@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-11 text-center" style="background-color: #FFF9EE;">
+      <h2>コメント一覧</h2>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>名前</th>
+                <th>コメント内容</th>
+                <th></th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+          <tbody>
+            <% @comments.each do |comment| %>
+              <tr>
+                <td><p><%= comment.user.name %></p></td>
+                <td><p><%= comment.comment %></p></td>
+                <td><p><%= link_to "削除", admin_comment_path(comment), class: 'btn btn-sm btn-danger', method: :delete, 'data-confirm'=>'本当に削除しますか？' %></p></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
