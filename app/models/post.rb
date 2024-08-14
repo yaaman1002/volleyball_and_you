@@ -2,7 +2,8 @@ class Post < ApplicationRecord
 
   has_many_attached :images
   belongs_to :user
-  has_many :liked_posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :user, source: :user
   has_many :comments, dependent: :destroy
 
   def get_image

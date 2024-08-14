@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :liked_posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
 
   has_one_attached :profile_image
 
@@ -24,8 +25,8 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def liked_posted_by?(post_id)
-    liked_post.where(post_id: post_id).exists?
+  def liked_by?(post_id)
+    likes.where(post_id: post_id).exists?
   end
 
   def self.search_for(content, method)

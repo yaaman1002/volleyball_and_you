@@ -6,3 +6,9 @@ ja:
     attributes:
       user:
         name: "名前"
+        last_name: "姓"
+        first_name: "名"
+        kana_first: "メイ"
+        kana_last: "セイ"
+        email: "メールアドレス"
+        encrypted_passsword: "パスワード"
