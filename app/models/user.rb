@@ -25,9 +25,6 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def liked_by?(post_id)
-    likes.where(post_id: post_id).exists?
-  end
 
   def self.search_for(content, method)
     if method == 'perfect'

@@ -49,9 +49,9 @@
                                       <%= link_to one_post.body %>
                                     </td>
                                     <td id="like_liked_<%= one_post.id %>">
-                                      <%= render "public/likes/liked", post: @post %>
+                                      <%= render "public/likes/liked", post: one_post %>
                                     </td>
-                                
+
                                     <td>
                                       <%= link_to edit_post_path(one_post), class: 'btn btn-outline-primary' do %>
                                         <i class="fa-solid fa-file-pen"></i>

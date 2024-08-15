@@ -1,29 +1,51 @@
+ <%= @post.comments.count %>件コメント
 <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
-<% post.comments.first(2).each do |comment| %>
-<p>
-  <%= link_to users_path(comment) do %>
-    <%= image_tag comment.user.get_profile_image(50, 50), size: '50x50' %>
-    <%= comment.user.name %>
+<% @comments.first(2).each do |comment| %>
+  <% unless comment.id.nil? %>
+    <li class="comment-container">
+      <div class="comment-box">
+        <div class="comment-avater">
+           <%= link_to users_path(comment) do %>
+             <%= image_tag comment.user.get_profile_image(50, 50), size: '50x50' %>
+                 <%= comment.user.name %>
+                    <% end %>
+        </div>
+            <div class="comment-entry">
+              <%= comment.comment %>
+                <% if comment.user==current_user %>
+                  <%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, class: 'btn btn-sm btn-danger', remote: true, data: {'turbolinks'=>false} %>
+                  <% end %>
+            </div>
+            <span class="comment-date pull-right">
+               <%= comment.created_at.strftime('%Y/%m/%d') %>
+            </span>
+        </div>
+      </li>
+    <% end %>
   <% end %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %>
-    <%= comment.comment %>
-    
-    <% if comment.user==current_user %>
-      <%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, class: 'btn btn-sm btn-danger', remote: true, data: {'turbolinks'=>false} %>
-      <% end %>
+
+    <div class="collapse" id="collapseExample">
+      <% post.comments.offset(2).each do |comment| %>
+        <% unless comment.id.nil? %>
+          <li class="comment-container">
+            <div class="comment-box">
+              <div class="comment-avater">
+                 <%= link_to users_path(comment) do %>
+                   <%= image_tag comment.user.get_profile_image(50, 50), size: '50x50' %>
+                     <%= comment.user.name %>
+                       <% end %>
+              </div>
+              <div class="comment-entry">
+              <%= comment.comment %>
+                <% if comment.user==current_user %>
+                  <%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, class: 'btn btn-sm btn-danger', remote: true, data: {'turbolinks'=>false} %>
+                  <% end %>
+              </div>
+             <span class="comment-date pull-right">
+               <%= comment.created_at.strftime('%Y/%m/%d') %>
+             </span>
+            </div>
+           </li>
+    <% end %>
   <% end %>
-</p>
-<% post.comments.offset(2).each do |comment| %>
-<p>
-  <%= link_to users_path(comment) do %>
-    <%= image_tag comment.user.get_profile_image(50, 50), size: '50x50' %>
-    <%= comment.user.name %>
-  <% end %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %>
-    <%= comment.comment %>
-    
-    <% if comment.user==current_user %>
-      <%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, class: 'btn btn-sm btn-danger', remote: true, data: {'turbolinks'=>false} %>
-      <% end %>
-  <% end %>
-</p>
+

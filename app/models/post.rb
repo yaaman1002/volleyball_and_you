@@ -13,7 +13,7 @@ class Post < ApplicationRecord
     end
     images.first
   end
-  
+
   def self.search_for(content, method)
     if method == 'perfect'
       Post.where(title: content)
@@ -24,6 +24,10 @@ class Post < ApplicationRecord
     else
       Post.where('title LIKE ?', '%' + content + '%')
     end
+  end
+
+  def liked_by?(post_id)
+    likes.where(post_id: post_id).exists?
   end
 
 end
