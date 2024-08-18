@@ -1,11 +1,11 @@
  <%= @post.comments.count %>件コメント
 <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
-<% @comments.first(2).each do |comment| %>
+<% @post.comments.first(2).each do |comment| %>
   <% unless comment.id.nil? %>
     <li class="comment-container">
       <div class="comment-box">
         <div class="comment-avater">
-           <%= link_to users_path(comment) do %>
+           <%= link_to users_path do %>
              <%= image_tag comment.user.get_profile_image(50, 50), size: '50x50' %>
                  <%= comment.user.name %>
                     <% end %>
