@@ -18,16 +18,20 @@ Rails.application.routes.draw do
     end
 
   scope module: :public do
-    resources :posts, only:[:new, :create, :index, :show, :edit, :destroy, :update] do
-      resource :likes, only:[:create, :destroy, :index]
-      resources :comments, only:[:create, :destroy]
+    resources :posts, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
+      resource :likes, only: [:create, :destroy,]
+      resources :comments, only: [:create, :destroy]
     end
-    resources :users, only:[:index, :show, :edit, :update] do
-      member do
-        get :likes
+    resources :users, only: [:index, :show, :edit, :update] do
+       member do
+         get :likes
       end
     end
-  end
+    resources :relationships, only: [:create, :destroy] do
+        get "followings" => "relationships#followings", as: "followings"
+        get "followers" => "relationships#followers", as: "followers"
+    end
+   end
 
   devise_scope :user do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'

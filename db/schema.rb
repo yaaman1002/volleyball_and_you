@@ -97,8 +97,11 @@ ActiveRecord::Schema.define(version: 2024_08_15_110032) do
   end
 
   create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

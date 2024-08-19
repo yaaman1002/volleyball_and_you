@@ -14,9 +14,5 @@ class Public::LikesController < ApplicationController
     if @like.destroy
     end
   end
-  
-  def index
-    @likes = Like.all
-    
 
 end
