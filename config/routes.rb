@@ -25,13 +25,14 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update] do
        member do
          get :likes
-      end
-    end
-    resources :relationships, only: [:create, :destroy] do
+        end
+      resources :relationships, only: [:create, :destroy] do
         get "followings" => "relationships#followings", as: "followings"
         get "followers" => "relationships#followers", as: "followers"
     end
+      resources :messages, only
    end
+  end
 
   devise_scope :user do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'

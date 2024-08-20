@@ -2,8 +2,22 @@
   <div class="row">
     <div class="col-md-1" style="background-color: #F9C1CF;">
       <nav class ="nav-item">
-        <%= link_to post_likes_path do %>
-          
+        <%= link_to likes_user_path(@user.id) do %>
+          <i class="fa-solid fa-heart"></i>
+          <p>いいね一覧</p>
+        <% end %>
+      </nav>
+      <nav class="nav-item">
+        <%= link_to user_relationship_followings_path(@user.id) do %>
+         <i class="fa-solid fa-circle-user"></i>
+          <p>フォロー一覧</p>
+          <% end %>
+      </nav>
+      <nav class="nav-item">
+        <%= link_to user_relationship_followers_path(@user.id) do %>
+        <i class="fa-regular fa-circle-user"></i>
+         <p>フォロワー一覧</p>
+         <% end %>
       </nav>
    </div>
       <div class="container">
