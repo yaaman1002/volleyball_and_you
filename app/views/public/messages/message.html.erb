@@ -1,0 +1,14 @@
+<div class="container" style="background-color: #F4FBFE;">
+  <div id="messages">
+    <%= render 'messages', messages: @messages %>
+  </div>
+  <div class="row">
+    <%= form_with model: @message, url: messages_path, method: :post, local: false, class: "w-100", html: { id: 'message_form' } do |f| %>
+      <div class="d-flex justify-content-center">
+        <%= f.text_field :body, class: "w-75", placeholder: "ここにメッセージを入力して下さい", id: "message_field" %>
+        <%= f.hidden_field :receive_user_id, value: params[:id] %>
+        <%= f.submit "送信", class: 'btn btn-secoundary w-25', id: 'message-btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>
