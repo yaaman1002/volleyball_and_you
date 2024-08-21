@@ -1,13 +1,15 @@
-<% if current_user != user %>
+<% if current_user != @user %>
   <% if current_user.following?(user) %>
     <div id="relationship_follow">
-      <p><%= link_to user_relationship_path(user.id), method: :delete, class: options[:class].presence || "btn btn-info" do %>
+      <p><%= link_to user_relationships_path(user.id), method: :delete, class: options[:class].presence || "btn btn-info" do %>
         フォローを外す</p>
+      <% end %>
     </div>
   <% else %>
     <div id="relationship_unfollow">
     <p><%= link_to user_relationships_path(user.id), method: :post, class: options[:class].presence || "btn btn-success" do %>
         フォローする</p>
+      <% end %>
     </div>
-  <% end %>
-<% end %>
+   <% end %>
+ <% end %>

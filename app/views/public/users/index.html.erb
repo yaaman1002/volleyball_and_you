@@ -1,14 +1,14 @@
-<div class="aboutback">
-  <div class="square">
+<div class="container mt-3 mb-3" style="background-color: #f5f5f5;">
+  <div class="row">
+    <div class="col-md-10 mt-3 mb-3">
      <h2 class="text-center" style="background-color: #cee4ae;">ユーザー一覧</h2>
-       <div class="container text-center mt-3" style="background-color: #f5f5f5;">
          <%= render 'searches/search' %>
         　<table class="table">
         　  <thead>
         　  <tr>
         　   <th>プロフィール</th>
-        　    <th>名前  </th>
-        　    <th>タイトル</th>
+            <th>名前</th>
+            <th></th>
         　 　<th colspan="3"></th>
         　  </tr>
         　</thead>
@@ -17,19 +17,18 @@
     　  <tr>
     　    <td><p><%= image_tag user.get_profile_image(100,100) %></p></td>
     　    <td><p><%= user.name %></p></td>
-          <td><p><%= user.title %></p></td>
-          <td><p><%= link_to relationship_followings_path(user.id) do %>
-                    　フォロー：<span id="following_count"><%= user.following.count %>人</span></p></td>
+          <td><p><%= link_to user_relationships_path(user.id) do %>
+                    　フォロー：<span id="followings_count"><%= user.followings.count %>人</span></p></td>
                   <% end %>
-          <td><p><%= link_to relationship_followers_path(user.id) do %>
-                      フォロワー：<span id="follower_count"><%= user.followers.count %>人</span></p></td>
+          <td><p><%= link_to user_relationships_path(user.id) do %>
+                      フォロワー：<span id="followers_count"><%= user.followers.count %>人</span></p></td>
                   <% end %>
           <td><p><%= link_to "ユーザー詳細", user_path(user.id) %></p></td>
     　  </tr>
-    　　 <% end %>
-    　</tbody>
-    </table>
+    　    <% end %>
+    　 </tbody>
+     </table>
+    </div>
   </div>
 </div>
-
 

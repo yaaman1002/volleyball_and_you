@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 mt-s mb-3" style="background-color: #FFF9EE;">
+      <h2 class="text-center">フォロー一覧</h2>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <p><%= image_tag.get_profile_image(100,100) %></p>
+                <td>
+                  <p><%= user.name %></p>
+                </td>
+                <td>
+                  <p>DMへのリンク</p>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </div>
+  </div>
+</div>

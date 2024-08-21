@@ -26,11 +26,13 @@ Rails.application.routes.draw do
        member do
          get :likes
         end
-      resources :relationships, only: [:create, :destroy] do
-        get "followings" => "relationships#followings", as: "followings"
-        get "followers" => "relationships#followers", as: "followers"
-    end
-      resources :messages, only
+      resource :relationships, only: [:create, :destroy] do
+        get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
+      end
+      resources :messages, only: [:create] do
+        get 'messages/:id' => 'messages#message', as: 'message'
+      end
    end
   end
 
