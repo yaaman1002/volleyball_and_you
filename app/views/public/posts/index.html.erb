@@ -8,13 +8,13 @@
         <% end %>
       </nav>
       <nav class="nav-item">
-        <%= link_to followings_user_relationships_path(@user.id) do %>
+        <%= link_to user_followings_path(@user.id) do %>
          <i class="fa-solid fa-circle-user"></i>
           <p>フォロー一覧</p>
           <% end %>
       </nav>
       <nav class="nav-item">
-        <%= link_to followers_user_relationships_path(@user.id) do %>
+        <%= link_to user_followers_path(@user.id) do %>
         <i class="fa-regular fa-circle-user"></i>
          <p>フォロワー一覧</p>
          <% end %>

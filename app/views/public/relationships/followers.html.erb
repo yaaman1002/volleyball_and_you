@@ -12,7 +12,9 @@
                  <p><%= user.name %></p>
                </td>
                <td>
-                 <p>DMへのリンク</p>
+                 <p><%= link_to user_message_path(user.id) do %>
+                    <i class="fa-regular fa-envelope"></i></p>
+                    <% end %>
                </td>
              </tr>
             <% end %>

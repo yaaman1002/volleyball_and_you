@@ -31,7 +31,7 @@ Rails.application.routes.draw do
         get 'followers' => 'relationships#followers', as: 'followers'
         
       resource :messages, only: [:create] 
-        get 'messages/:id' => 'messages#message', as: 'message'
+      get 'messages' => 'messages#message', as: 'message'
    end
   end
 

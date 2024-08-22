@@ -1,8 +1,9 @@
-<div class="aboutback row">
-  <div class="square col-md-4" style="background-color: #cee4ae;">
+<div class="container">
+ <div class="row">
+  <div class="square col-md-4" style="background-color: #FFF9EE;">
    <h1>ユーザー詳細</h1>
      <%= image_tag @user.get_profile_image(100,100) %>
-      <div class="container card mt-3 mb-3">
+        <div class="container card mt-3 mb-3">
             <table class="table">
               <tbody>
                 <tr></tr>
@@ -12,14 +13,11 @@
                      <td><%= @user.introduction %></td></tr>
               </tbody>
             </table>
-            <div id="relationships">
-              <%= render "public/relationships/btn" %>
-            </div>
-          </div>
         </div>
+  </div>
       
-       <div class="card col-md-7 offset-md-1" style="background-color: ">
-             <div class="row">
+       <div class="col-md-7 offset-md-1" style="background-color: #6495ED;">
+            <div class="row">
                 <% @posts.each do |posts| %>
                   <div class="col-md-3">
                     <%= image_tag(posts.get_image, size: "100x100") %>
@@ -27,10 +25,14 @@
                       <div class="col-md-7">
         　               <div class="card-body">
                           <h5 class="list-group-item font-weight-bold"><%= posts.title %></h5>
-                          <h6 class="list-group-item"><%= posts.body %></h6>
+                          <p class="list-group-item"><%= posts.body %></p>
                         </div>
-                     </div>
-               <% end %>
-        </div>
-      </div>
-    </div>
+                       </div>
+                <% end %>
+                      <div id="relationships_follow<%= @user.id %>">
+                        <%= render "public/relationships/btn", user: @user %>
+                      </div>
+            </div>
+       </div>
+  </div>
+</div>

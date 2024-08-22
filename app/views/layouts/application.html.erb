@@ -9,12 +9,12 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/f9b17be825.js" crossorigin="anonymous"></script>
-    
+
   </head>
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> 
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
           <span>
             <%= link_to root_path, class: 'font-color' do %>
@@ -35,6 +35,10 @@
               </li>
 
               <li class="nav-item">
+                <%= link_to "Users", users_path, class: 'nav-link text-lite' %>
+              </li>
+
+              <li class="nav-item">
                 <%= link_to "My-page", posts_path, class: 'nav-link text-lite' %>
               </li>
 
@@ -45,21 +49,21 @@
               <li class="nav-item">
                 <%= link_to "Log-out", destroy_user_session_path, method: :delete, class: 'nav-link text-lite' %>
               </li>
-              
+
               <% elsif admin_signed_in? %>
-                  
+
                 <li class="nav-item">
                   <%= link_to "ユーザー一覧", admin_dashboards_path, class: 'nav-link text-lite' %>
                 </li>
-                
+
                 <li class="nav-item">
                   <%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-lite' %>
                 </li>
-                
+
                 <li class="nav-item">
                   <%= link_to "コメント一覧", admin_comments_path, class: 'nav-link text-lite' %>
                 </li>
-                
+
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-lite' %>
                 </li>
@@ -86,7 +90,7 @@
                 <%= link_to "Guest-log-in", users_guest_sign_in_path, class: 'nav-link text-lite font-color', method: :post %>
               </li>
               <% end %>
-              
+
 
 
             </ul>

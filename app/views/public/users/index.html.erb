@@ -17,12 +17,10 @@
     　  <tr>
     　    <td><p><%= image_tag user.get_profile_image(100,100) %></p></td>
     　    <td><p><%= user.name %></p></td>
-          <td><p><%= link_to user_relationships_path(user.id) do %>
-                    　フォロー：<span id="followings_count"><%= user.followings.count %>人</span></p></td>
-                  <% end %>
-          <td><p><%= link_to user_relationships_path(user.id) do %>
-                      フォロワー：<span id="followers_count"><%= user.followers.count %>人</span></p></td>
-                  <% end %>
+          <td><p>フォロー：<span id="followings_count"><%= user.followings.count %>人</span></p></td>
+                  
+          <td><p>フォロワー：<span id="followers_count"><%= user.followers.count %>人</span></p></td>
+                 
           <td><p><%= link_to "ユーザー詳細", user_path(user.id) %></p></td>
     　  </tr>
     　    <% end %>

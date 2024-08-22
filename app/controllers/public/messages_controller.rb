@@ -1,11 +1,15 @@
 class Public::MessagesController < ApplicationController
   before_action :check, only: [:message]
-  
+
   def message
     @message = Message.new
-    @messages = Message.where(send_user_id: current_user.id,
-                              receive_user_id: params[:id]).or(@receive_messages = Message.where(send_user_id: params[:id],
-                              receive_user_id: current_user.id)).order(:created_at)
+    @messages = Message.where(send_user_id: current_user.id, receive_user_id: params[:id])
+                       .or(
+                          @receive_messages = Message.where(
+                           send_user_id: params[:id],
+                           receive_user_id: current_user.id
+                          )
+                        ).order(:created_at)
   end
 
 def create
@@ -31,12 +35,12 @@ def message_params
 end
 
 def check
-  if params[:id] == current_user.id
+  if params[:user_id] == current_user.id
     redirect_back fallback_location: root_path
   else
-    check1 = Relationship.exists?(followed_id: params[:id], follower_id: current_user.id)
-    check2 = Relationship.exists?(follower_id: params[:id], followed_id: current_user.id)
-    redirect_back fallback_location: root_path if !check || !check2
+    check1 = Relationship.exists?(followed_id: params[:user_id], follower_id: current_user.id)
+    check2 = Relationship.exists?(follower_id: params[:user_id], followed_id: current_user.id)
+    redirect_back fallback_location: root_path if !check1 || !check2
   end
- end
+end
 end
