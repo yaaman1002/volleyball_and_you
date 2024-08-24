@@ -1,7 +1,38 @@
-<div class="container">
- <div class="row">
-  <div class="square col-md-4" style="background-color: #FFF9EE;">
-   <h1>ユーザー詳細</h1>
+<div class="container-fluid" style="background-color: #FFF9EE;">
+  <div class="row">
+    <div class="col-md-1 ml-4 mr-4" style="background-color: #F9C1CF;">
+      <nav class ="nav-item">
+        <%= link_to likes_user_path(@user.id) do %>
+          <i class="fa-solid fa-heart"></i>
+          <p>いいね一覧</p>
+        <% end %>
+      </nav>
+      <nav class="nav-item">
+        <%= link_to user_followings_path(@user.id) do %>
+         <i class="fa-solid fa-circle-user"></i>
+          <p>フォロー一覧</p>
+          <% end %>
+      </nav>
+      <nav class="nav-item">
+        <%= link_to user_followers_path(@user.id) do %>
+        <i class="fa-regular fa-circle-user"></i>
+         <p>フォロワー一覧</p>
+        <% end %>
+      </nav>
+    </div>
+    <div class="square col-md-7" style="background-color: #FAC7C1;">
+     <% if @user.id == current_user.id %>
+      <h1>マイページ</h1>
+       <% @relation_users.each do |user| %>
+        <p><%= image_tag user.get_profile_image(70,70) %>
+           <%= user.name %>
+           <%= link_to user_message_path(user.id) do %>
+           <i class="fa-regular fa-envelope"></i></p>
+         <% end %>
+     <% end %>
+     <% else %>
+       <h1>ユーザー詳細</h1>
+     <% end %>
      <%= image_tag @user.get_profile_image(100,100) %>
         <div class="container card mt-3 mb-3">
             <table class="table">
@@ -14,12 +45,11 @@
               </tbody>
             </table>
         </div>
-  </div>
-      
-       <div class="col-md-7 offset-md-1" style="background-color: #6495ED;">
-            <div class="row">
+    </div>
+  </div>    
+  <div class="row mt-3 mb-3 ml-3 mr-3" style="background-color: #D3E173;">
                 <% @posts.each do |posts| %>
-                  <div class="col-md-3">
+                  <div class="col-md-3 mt-4">
                     <%= image_tag(posts.get_image, size: "100x100") %>
                   </div>
                       <div class="col-md-7">
@@ -29,10 +59,8 @@
                         </div>
                        </div>
                 <% end %>
-                      <div id="relationships_follow<%= @user.id %>">
+                      <div id="relationships_follow<%= @user.id %>" style="background-color: #F0F8FF;">
                         <%= render "public/relationships/btn", user: @user %>
                       </div>
-            </div>
-       </div>
   </div>
 </div>

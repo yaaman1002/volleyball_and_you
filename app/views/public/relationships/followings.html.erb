@@ -1,7 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mt-s mb-3" style="background-color: #FFF9EE;">
+    <div class="col-md-10 mt-3 mb-3" style="background-color: #FFF9EE;">
       <h2 class="text-center">フォロー一覧</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>プロフィール</th>
+              <th>名前</th>
+              <th></th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
         <tbody>
           <% @users.each do |user| %>
             <tr>
@@ -10,14 +19,10 @@
                 <td>
                   <p><%= user.name %></p>
                 </td>
-                <td>
-                  <p><%= link_to user_message_path(user.id) do %>
-                    <i class="fa-regular fa-envelope"></i></p>
-                  <% end %>
-                </td>
             </tr>
             <% end %>
         </tbody>
+      </table>
     </div>
   </div>
 </div>

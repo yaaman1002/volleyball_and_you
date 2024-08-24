@@ -8,6 +8,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @relation_users = @user.followings & @user.followers
     @posts = @user.posts
     @users = User.all
   end
@@ -27,7 +28,7 @@ class Public::UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:id])
-    likes = Like.where(user_id: @user.id).pluck(:post_id)
+    likes = Like.where(user_id: @user.id).pluck(:id)
     @like_posts = Post.find(likes)
   end
 

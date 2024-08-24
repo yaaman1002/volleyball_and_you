@@ -1,87 +1,47 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-1" style="background-color: #F9C1CF;">
-      <nav class ="nav-item">
-        <%= link_to likes_user_path(@user.id) do %>
-          <i class="fa-solid fa-heart"></i>
-          <p>いいね一覧</p>
-        <% end %>
-      </nav>
-      <nav class="nav-item">
-        <%= link_to user_followings_path(@user.id) do %>
-         <i class="fa-solid fa-circle-user"></i>
-          <p>フォロー一覧</p>
-          <% end %>
-      </nav>
-      <nav class="nav-item">
-        <%= link_to user_followers_path(@user.id) do %>
-        <i class="fa-regular fa-circle-user"></i>
-         <p>フォロワー一覧</p>
-         <% end %>
-      </nav>
-   </div>
-      <div class="container">
-        <div class="row" style="background-color: #fef9fb;">
-            <div class="col-md-10 offset-md-1">
-               <h1>My_Page</h1>
-                 <%= image_tag @user.get_profile_image(100,100) %>
-                      <table class="table">
-                        <tbody>
-                          <tr></tr>
-                           <tr><th class="bg-lite">name</th>
-                               <td><%= @user.name %></td></tr>
-                           <tr><th class="bg-lite">introduction</th>
-                               <td><%= @user.introduction %></td></tr>
-                        </tbody>
-                      </table>
-                        <%= link_to edit_user_path(@user), class: 'btn btn-outline-primary' do %>
-                          <i class="fa-solid fa-user-gear"></i>
-                        <% end %>
-                   </div>
-                 </div>
-                    <div class="container">
-                     <div class="row">
-                        <div class="col-md-10 offset-md-1 mt-4" style="background-color: #fef9fb;">
-                           <table class="table table-striped">
-                             <thead>
-                             <tr>
-                              <th></th>
-                              <th>タイトル</th>
-                              <th>投稿内容</th>
-                              <th colspan="3"></th>
-                             </tr>
-                            <tbody>
-                               <% @posts.each do |one_post| %>
-                                  <tr>
-                                    <td>
-                                      <%= link_to user_path(@user) do %>
-                                      <%= image_tag(one_post.get_image, size: "150x150") %>
-                                      <% end %>
-                                    </td>
-                                    <td>
-                                      <%= link_to one_post.title, post_path(one_post) %>
-                                    </td>
-                                    <td>
-                                      <%= link_to one_post.body %>
-                                    </td>
-                                    <td id="like_liked_<%= one_post.id %>">
-                                      <%= render "public/likes/liked", post: one_post %>
-                                    </td>
-
-                                    <td>
-                                      <%= link_to edit_post_path(one_post), class: 'btn btn-outline-primary' do %>
-                                        <i class="fa-solid fa-file-pen"></i>
-                                      <% end %>
-                                    </td>
-                                  </tr>
-                                  <% end %>
-                                </tbody>
-                              </thead>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+<div class="container" style="background-color: #FFF9EE;">
+  <h2 class="text-center pt-3 pb-3 mt-2" style="background-color: #84C98B;">投稿一覧</h2>
+    <div class="row" style="background-color: #fef9fb;">
+            <div class="col-md-10 offset-md-1 mt-4" style="background-color: #fef9fb;">
+               <table class="table table-striped">
+                 <thead>
+                 <tr>
+                  <th></th>
+                  <th>タイトル</th>
+                  <th>投稿内容</th>
+                  <th colspan="3"></th>
+                 </tr>
+                <tbody>
+                   <% @posts.each do |one_post| %>
+                      <tr>
+                        <td>
+                          <%= link_to user_path(@user) do %>
+                          <%= image_tag(one_post.get_image, size: "150x150") %>
+                          <% end %>
+                        </td>
+                        <td>
+                          <%= link_to one_post.title, post_path(one_post) %>
+                        </td>
+                        <td>
+                          <%= link_to one_post.body %>
+                        </td>
+                        <td id="like_liked_<%= one_post.id %>">
+                          <%= render "public/likes/liked", post: one_post %>
+                        </td>
+      
+                        <td>
+                          <%= link_to edit_post_path(one_post), class: 'btn btn-outline-primary' do %>
+                            <i class="fa-solid fa-file-pen"></i>
+                          <% end %>
+                        </td>
+                      </tr>
+                      <% end %>
+                    </tbody>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 

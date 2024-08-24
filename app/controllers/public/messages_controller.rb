@@ -3,7 +3,7 @@ class Public::MessagesController < ApplicationController
 
   def message
     @message = Message.new
-    @messages = Message.where(send_user_id: current_user.id, receive_user_id: params[:id])
+    @messages = Message.where(send_user_id: current_user.id, receive_user_id: params[:user_id])
                        .or(
                           @receive_messages = Message.where(
                            send_user_id: params[:id],

@@ -33,6 +33,8 @@ Rails.application.routes.draw do
       resource :messages, only: [:create] 
       get 'messages' => 'messages#message', as: 'message'
    end
+    resources :notifications, only: [:index] do
+    end
   end
 
   devise_scope :user do
