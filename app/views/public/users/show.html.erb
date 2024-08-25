@@ -45,18 +45,29 @@
               </tbody>
             </table>
         </div>
+        
+        <% unless @user.guest_user? %>
+        <div class="row">
+          <%= link_to edit_user_path(@user), class: 'btn btn-outline-primary' do %>
+            <i class="fa-solid fa-user-gear"></i>
+          <% end %>
+        </div>
+        <% end %>
     </div>
   </div>    
   <div class="row mt-3 mb-3 ml-3 mr-3" style="background-color: #D3E173;">
                 <% @posts.each do |posts| %>
-                  <div class="col-md-3 mt-4">
-                    <%= image_tag(posts.get_image, size: "100x100") %>
+                  <div class="col-md-3 mt-2 mb-2">
+                    <%= image_tag(posts.get_image, size: "250x250") %>
                   </div>
                       <div class="col-md-7">
         　               <div class="card-body">
                           <h5 class="list-group-item font-weight-bold"><%= posts.title %></h5>
                           <p class="list-group-item"><%= posts.body %></p>
                         </div>
+                          <%= link_to edit_post_path(posts), class: 'btn btn-outline-primary' do %>
+                            <i class="fa-solid fa-file-pen"></i>
+                           <% end %>
                        </div>
                 <% end %>
                       <div id="relationships_follow<%= @user.id %>" style="background-color: #F0F8FF;">

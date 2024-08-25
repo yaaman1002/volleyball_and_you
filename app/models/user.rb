@@ -14,15 +14,23 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :send_user, class_name: "User"
   has_many :receive_user, class_name: "User"
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
 
   has_one_attached :profile_image
 
+  GUEST_USER_EMAIL = "guest@example.com"
+
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
-      user.password=SecureRandom.urlsafe_base64
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guest-user"
     end
   end
+
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
+
 
   def get_profile_image(width,height)
     unless profile_image.attached?

@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :user, source: :user
   has_many :comments, dependent: :destroy
+  has_many :notifications, as: :notifiable, dependent: :destroy
 
   def get_image
     unless images.first
@@ -28,6 +29,12 @@ class Post < ApplicationRecord
 
   def liked_by?(post_id)
     likes.where(post_id: post_id).exists?
+  end
+  
+  after_create do
+    user.followers.each do |follower|
+      notifications.create(user_id: follower.id)
+    end
   end
 
 end

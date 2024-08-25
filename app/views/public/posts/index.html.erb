@@ -14,7 +14,7 @@
                    <% @posts.each do |one_post| %>
                       <tr>
                         <td>
-                          <%= link_to user_path(@user) do %>
+                          <%= link_to user_path(one_post) do %>
                           <%= image_tag(one_post.get_image, size: "150x150") %>
                           <% end %>
                         </td>
@@ -22,16 +22,10 @@
                           <%= link_to one_post.title, post_path(one_post) %>
                         </td>
                         <td>
-                          <%= link_to one_post.body %>
+                          <%= one_post.body %>
                         </td>
                         <td id="like_liked_<%= one_post.id %>">
                           <%= render "public/likes/liked", post: one_post %>
-                        </td>
-      
-                        <td>
-                          <%= link_to edit_post_path(one_post), class: 'btn btn-outline-primary' do %>
-                            <i class="fa-solid fa-file-pen"></i>
-                          <% end %>
                         </td>
                       </tr>
                       <% end %>

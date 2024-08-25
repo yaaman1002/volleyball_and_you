@@ -1,14 +1,14 @@
 class Public::NotificationsController < ApplicationController
+  before_action :authenticate_user!
   
-  def index
-    @notifications = current_user.notifications.order(create_at: :desc).page(params[:page]).per(20)
-    @notifications.where(checked: false).each do |notification|
-       notification.update(checked: true)
-     end
-  end
-  
-  def destroy
-    @notifications = current_user.notifications.destroy_all
-    redirect_to notifications_path
+  def update
+    notification = current_user.notifications.find(params[:id])
+    notification.update(read: true)
+    case notification.notifiable_type
+    when "Post"
+      redirect_to post_path(notifcation.notifiable)
+    else
+      redirect_to user_path(notification.notifiable.user)
+    end
   end
 end

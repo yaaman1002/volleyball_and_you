@@ -26,19 +26,18 @@ Rails.application.routes.draw do
        member do
          get :likes
         end
-      resource :relationships, only: [:create, :destroy] 
+      resource :relationships, only: [:create, :destroy]
         get 'followings' => 'relationships#followings', as: 'followings'
         get 'followers' => 'relationships#followers', as: 'followers'
-        
-      resource :messages, only: [:create] 
+
+      resource :messages, only: [:create]
       get 'messages' => 'messages#message', as: 'message'
    end
-    resources :notifications, only: [:index] do
-    end
+    resources :notifications, only: [:update]
   end
 
   devise_scope :user do
-    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 
   root to: 'homes#top'
