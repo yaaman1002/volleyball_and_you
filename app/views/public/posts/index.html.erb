@@ -16,6 +16,7 @@
                         <td>
                           <%= link_to user_path(one_post) do %>
                           <%= image_tag(one_post.get_image, size: "150x150") %>
+                          <p><%= one_post.user.name %></p>
                           <% end %>
                         </td>
                         <td>
@@ -26,6 +27,8 @@
                         </td>
                         <td id="like_liked_<%= one_post.id %>">
                           <%= render "public/likes/liked", post: one_post %>
+                        </td>
+                        <td id="comment_count"><i class="fa-regular fa-comments"></i>: <%= one_post.comments.count %>
                         </td>
                       </tr>
                       <% end %>

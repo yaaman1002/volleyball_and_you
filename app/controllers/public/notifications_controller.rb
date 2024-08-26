@@ -6,9 +6,9 @@ class Public::NotificationsController < ApplicationController
     notification.update(read: true)
     case notification.notifiable_type
     when "Post"
-      redirect_to post_path(notifcation.notifiable)
+      redirect_to post_path(notification.notifiable)
     else
-      redirect_to user_path(notification.notifiable.user)
+      redirect_to user_path(notification.notifiable)
     end
   end
 end

@@ -1,17 +1,16 @@
-<div class="container mt-5">
+<div class="container">
   <div class="row">
-    <div class="col-md-12 text-center" style="background-color: #FFF9EE;">
-      <h3 class="mb-3" style="background-color: #F067A6;">いいねした投稿一覧</h3>
+    <div class="col-md-11 text-center" style="background-color: #FFF9EE;">
+      <h3 class="text-center pt-4 pb-4 mt-3" style="background-color: #F067A6;">いいねした投稿一覧</h3>
       　<% @like_posts.each do |one_post| %>
         <div class="row" style="background-color: #F0F8FF;">
-          <div class="col-md-3">
-            <%= image_tag(one_post.get_image, size: "100x100") %>
+          <div class="col-md-3 mt-3">
+            <%= image_tag(one_post.get_image, size: "200x200") %>
       　   </div>
       　 </div>
            <div class="row" style="background-color: #F0F8FF;">
-      　     <div class="col-md-7 offset-md-2">
+      　     <div class="col-md-7">
              <div class="card-body">
-              <p class="list-group-item"><%= one_post.created_at.strftime('%Y/%m/%d') %></p>
               <h5 class="list-group-item font-weight-bold"><%= one_post.title %></h5>
               <p class="list-group-item"><%= one_post.body.truncate(100) %></p>
               <h6 class="list-group-item"><%= one_post.user.name %></h6>

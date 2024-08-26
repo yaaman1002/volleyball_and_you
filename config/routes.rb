@@ -22,8 +22,8 @@ Rails.application.routes.draw do
       resource :likes, only: [:create, :destroy,]
       resources :comments, only: [:create, :destroy]
     end
-    resources :users, only: [:index, :show, :edit, :update] do
-       member do
+    resources :users, only: [:index, :show, :edit, :update,] do
+      member do
          get :likes
         end
       resource :relationships, only: [:create, :destroy]
@@ -32,6 +32,11 @@ Rails.application.routes.draw do
 
       resource :messages, only: [:create]
       get 'messages' => 'messages#message', as: 'message'
+      
+      collection do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
    end
     resources :notifications, only: [:update]
   end
@@ -44,7 +49,5 @@ Rails.application.routes.draw do
 
   get 'homes/about', as: 'about'
   get 'search', to: 'searches#search'
-  get 'users/unsubscrible', to: 'users#unsubscrible'
-  patch 'users/withdraw', to: 'users#withdraw'
-
+ 
 end

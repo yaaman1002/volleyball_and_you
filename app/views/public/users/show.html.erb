@@ -46,7 +46,7 @@
             </table>
         </div>
         
-        <% unless @user.guest_user? %>
+        <% unless @user.guest_user? || @user.id %> %>
         <div class="row">
           <%= link_to edit_user_path(@user), class: 'btn btn-outline-primary' do %>
             <i class="fa-solid fa-user-gear"></i>
@@ -65,13 +65,13 @@
                           <h5 class="list-group-item font-weight-bold"><%= posts.title %></h5>
                           <p class="list-group-item"><%= posts.body %></p>
                         </div>
-                          <%= link_to edit_post_path(posts), class: 'btn btn-outline-primary' do %>
-                            <i class="fa-solid fa-file-pen"></i>
-                           <% end %>
-                       </div>
-                <% end %>
-                      <div id="relationships_follow<%= @user.id %>" style="background-color: #F0F8FF;">
-                        <%= render "public/relationships/btn", user: @user %>
                       </div>
+                <% end %>
+                
+                      <p>
+                        <div id="relationships_follow<%= @user.id %>">
+                           <%= render "public/relationships/btn", user: @user %>
+                         </div>
+                      </p>
   </div>
 </div>

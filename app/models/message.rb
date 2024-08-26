@@ -5,4 +5,8 @@ class Message < ApplicationRecord
   
   validates :body, presence: true, length: { maximum: 140 }
 
+
+  after_create do
+    notifications.create(user_id: receive_user_id)
+  end
 end

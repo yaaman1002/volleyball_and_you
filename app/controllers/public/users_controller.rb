@@ -30,13 +30,14 @@ class Public::UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:id])
-    likes = Like.where(user_id: @user.id).pluck(:id)
+    likes = Like.where(id: @user.id).pluck(:id)
     @like_posts = Post.find(likes)
   end
+  
+  def unsubscribe; end
 
   def withdraw
-    @user = User.find(params[:id])
-    @user.update(is_active: false)
+    current_user.update(is_active: false)
     reset_session
     flash[:notice] = "退会処理を実行いたしました。"
     redirect_to root_path

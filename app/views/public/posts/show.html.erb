@@ -1,36 +1,60 @@
 <div class="container" style="background-color: #FFF9EE;">
-  <h2 class="text-center mt-3 mb-3" style="background-color: #71CC6A;">投稿詳細</h2>
+  <h2 class="text-center pt-4 pb-4 mt-2" style="background-color: #92cb97;">投稿詳細</h2>
     <div class="row">
-      <div class="col-md-3 ml-2" style="background-color: #F6F7F8;">
-         <p><%= link_to user_path(@user.id) do %></p>
-         <p><%= image_tag @user.get_profile_image(100,100) %></p>
-         <p><%= @user.name %></p>
-           <% end %>
+      <div class="col-md-3 ml-3 mt-3" style="background-color: #f9e900;">
+        <%= link_to user_path(@user.id) do %></p>
+          <%= image_tag @user.get_profile_image(100,100) %></p>
+        <% end %>
+            <table class="table">
+              <tbody>
+                <tr></tr>
+                <tr>
+                   <th class="bg-lite">name</th>
+                     <td><%= @user.name %></td>
+                </tr>
+                <tr>
+                    <th class="bg-lite">introduction</th>
+                      <td><%= @user.introduction %></td>
+                </tr>
+              </tbody>
+            </table>
       </div>
-      <div class="col-md-8 offset-md-1">
-          <p><%= @post.title %></p>
-          <p><%= @post.body %></p>
-       </div>     
     </div>
-    <div class="row mt-3 mb-3">
-      <div class="col-md-8 offset-md-1" style="background-color: #84C98B;">
+
+    <div class="row">
+      <div class="col-md-3 mt-3 ml-3 pt-2 text-center" style="background-color: #f5a500;">
+        <%= image_tag(@post.get_image, size: "180x180") %>
+      </div>
+       <div class="col-md-8 ml-4 mt-3" style="background-color: #f5a500;">
+        <div class="card-body">
+          <h5 class="list-group-item font-weight-bold"><%= @post.title %></h5>
+          <p class="list-group-item"><%= @post.body %></p>
+            
+        </div>
+       </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-1 mb-4 mt-4" style="background-color: #84C98B;">
         <ul>
           <li class="comment-create">
             <h6 class="text-left title">コメント</h6>
-               <p>コメント数：<span id="comment_count"><%= @post.comments.count %></span></p>
+
        　　　　　　　　 <div id="comments">
          　　　　　　　　   <%= render "public/comments/commentshow", post: @post %>
                   </div>
             </li>
         </ul>
-        <% if @post.user==current_user %>
+        <% unless @post.user == current_user %>
         <div id ="comment-form">
           <h6 class="text-left">コメントを投稿する</h6>
             <%= render "public/comments/form", post: @post, comment: @comment %>
         </div>
+        <% end %>
+        <% if @post.user == current_user %>
         <p><%= link_to '投稿編集', edit_post_path(@post), class: 'btn btn-sm btn-success' %></p>
         <p><%= link_to '投稿削除', post_path(@post), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm"=>"本当に消しますか？" %></p>
-            <% end %>
+         <% end %>
       </div>
   </div>
 </div>
