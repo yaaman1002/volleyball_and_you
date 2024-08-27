@@ -33,7 +33,7 @@ class Public::UsersController < ApplicationController
     likes = Like.where(id: @user.id).pluck(:id)
     @like_posts = Post.find(likes)
   end
-  
+
   def unsubscribe; end
 
   def withdraw
@@ -59,7 +59,7 @@ private
       redirect_to users_path
     end
   end
-  
+
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.email == "guest@example.com"

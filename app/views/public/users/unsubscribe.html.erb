@@ -1,14 +1,18 @@
-<div class="container">
-  <div class="row" style="background-color: #FFFEF6;">
-    <h1 class="text-center">本当に退会しますか？</h1>
-      <p>
-        退会する場合は、「退会する」ボタンを<br >
-        クリックして下さい。
-      </p>
-      
-       <%= link_to "退会しない", posts_path, class: 'btn btn-primary ms-3' %>
-       <%= link_to "退会する", withdraw_users_path, method: :patch, class: 'btn btn-danger ms-3', data: { confirm: "本当に退会しますか？"} %>
-       
+<div class="bg-white p-6 md:mx-auto">
+  <div class="text-center">
+    <p class="md:text-2xl text-base text-gray-900 font-semibold text-center">本当に退会しますか？</p>
+    <p class="text-gray-600 my-2">一度退会すると、<br />このアカウントで再度ログインできなくなります。</p>
+    <div class="flex items-center justify-center space-x-5">
+      <div class="py-8 text-center">
+        <%= link_to withdraw_users_path, data: { "turbo-method": :patch }, class: "px-5 py-2.5 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-md" do %>
+          退会する
+        <% end %>
+      </div>
+      <div class="py-8 text-center">
+        <%= link_to edit_user_path(current_user.id), class: 'px-5 py-2.5 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-md' do %>
+         キャンセル
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
-

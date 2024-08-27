@@ -7,17 +7,20 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(resource)
+    flash[:notice] = "新規登録に成功しました"
+    flash[:notice] = "ログインに成功しました"
     user_path(current_user.id)
   end
 
   def after_sign_out_path_for(resource)
+    flash[:notice] = "ログアウトに成功しました"
     root_path
   end
 
-  private
+  protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:last_name, :first_name, :kana_first, :kana_last, :email])
   end
 
   def user_state
