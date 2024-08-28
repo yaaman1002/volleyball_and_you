@@ -9,7 +9,7 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
     flash[:notice] = "新規登録に成功しました"
     flash[:notice] = "ログインに成功しました"
-    user_path(current_user.id)
+    user_path(resource.id)
   end
 
   def after_sign_out_path_for(resource)
@@ -25,9 +25,9 @@ class Public::SessionsController < Devise::SessionsController
 
   def user_state
     user = User.find_by(email: params[:user][:email])
-      return if user.nil?
-      return unless user.valid_password?(params[:user][:password]) && user.active_for_authentication?
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        redirect_to new_user_registration_path
+    return if user.nil?
+    return if user.valid_password?(params[:user][:password]) && user.active_for_authentication?
+    flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+    redirect_to new_user_registration_path
   end
 end

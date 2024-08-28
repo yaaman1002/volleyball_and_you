@@ -45,16 +45,18 @@
               </tbody>
             </table>
         </div>
-        
-        <% unless @user.guest_user? || @user.id %> %>
+
+        <% unless @user.guest_user? %>
+        <% if @user.id == current_user.id %>
         <div class="row">
           <%= link_to edit_user_path(@user), class: 'btn btn-outline-primary' do %>
             <i class="fa-solid fa-user-gear"></i>
           <% end %>
         </div>
         <% end %>
+        <% end %>
     </div>
-  </div>    
+  </div>
   <div class="row mt-3 mb-3 ml-3 mr-3" style="background-color: #D3E173;">
                 <% @posts.each do |posts| %>
                   <div class="col-md-3 mt-2 mb-2">
@@ -67,7 +69,7 @@
                         </div>
                       </div>
                 <% end %>
-                
+
                       <p>
                         <div id="relationships_follow<%= @user.id %>">
                            <%= render "public/relationships/btn", user: @user %>
