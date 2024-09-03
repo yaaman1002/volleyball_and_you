@@ -17,6 +17,10 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   has_one_attached :profile_image
+  
+  validates :name, length: { in: 2..20 }
+  validates :name, uniqueness: true
+  validates :introduction, length: { maximum: 50 }
 
   GUEST_USER_EMAIL = "guest@example.com"
 

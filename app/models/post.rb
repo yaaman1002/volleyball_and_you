@@ -6,6 +6,10 @@ class Post < ApplicationRecord
   has_many :liked_users, through: :user, source: :user
   has_many :comments, dependent: :destroy
   has_many :notifications, as: :notifiable, dependent: :destroy
+  
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :body, length: { maximum: 200 }
 
   def get_image
     unless images.first

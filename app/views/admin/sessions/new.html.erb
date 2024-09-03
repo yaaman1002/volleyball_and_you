@@ -1,8 +1,8 @@
-<div class="container" style="background-color: #FFE8AF;">
-  <div class="row">
-    <div class="col-md-7 text-center">
+<div class="container">
+  <div class="row" style="background-color: #FFF9EE;">
+    <div class="text-center col-md-12">
      <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
-      <h2>Log in</h2>
+      <h2 class="text-center pt-2 pb-2 mt-3" style="background-color: #84C98B;">Log in</h2>
        <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -20,7 +20,7 @@
         </div>
       <% end %>
     
-      <div class="actions">
+      <div class="actions mt-4 mb-4 mr-4">
         <%= f.submit "Log in" %>
       </div>
     <% end %>
