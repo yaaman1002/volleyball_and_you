@@ -2,7 +2,7 @@
 
 ja:
   activerecord:
-   attributes: 
+   attributes:
     user:
       name: "名前"
       last_name: "姓"
@@ -10,12 +10,16 @@ ja:
       kana_first: "メイ"
       kana_last: "セイ"
       email: "Eメール"
-      Passsword: "パスワード"
+      password: "パスワード"
       password_confirmation: "パスワード (確認用)"
-      (6_characters_minimum): "(６文字以上)"
-    errors: 
-     models:
-      
+   errors:
+    models:
+     user:
+      attributes:
+       email:
+        blank: "が空欄です"
+       password:
+        blank: "が空欄です"
   devise:
     confirmations:
       confirmed: "メールアドレスが確認できました。"

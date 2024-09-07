@@ -44,6 +44,9 @@
                      <td><%= @user.introduction %></td></tr>
               </tbody>
             </table>
+             <div id="relationships_follow<%= @user.id %>">
+               <%= render "public/relationships/btn", user: @user %>
+            </div>
         </div>
 
         <% unless @user.guest_user? %>
@@ -58,22 +61,16 @@
     </div>
   </div>
   <div class="row mt-3 mb-3 ml-3 mr-3" style="background-color: #D3E173;">
-                <% @posts.each do |posts| %>
-                  <div class="col-md-3 mt-2 mb-2">
-                    <%= image_tag(posts.get_image, size: "250x250") %>
-                  </div>
-                      <div class="col-md-7">
-        　               <div class="card-body">
-                          <h5 class="list-group-item font-weight-bold"><%= posts.title %></h5>
-                          <p class="list-group-item"><%= posts.body %></p>
-                        </div>
-                      </div>
-                <% end %>
-
-                      <p>
-                        <div id="relationships_follow<%= @user.id %>">
-                           <%= render "public/relationships/btn", user: @user %>
-                         </div>
-                      </p>
+        <% @posts.each do |posts| %>
+          <div class="col-md-3 mt-2 mb-2">
+            <%= image_tag(posts.get_image, size: "250x250") %>
+          </div>
+              <div class="col-md-7">
+    　           <div class="card-body">
+                  <h5 class="list-group-item font-weight-bold"><%= posts.title %></h5>
+                  <p class="list-group-item"><%= posts.body %></p>
+                </div>
+              </div>
+        <% end %>
   </div>
 </div>
