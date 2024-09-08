@@ -12,9 +12,9 @@ class Public::NotificationsController < ApplicationController
     when "Comment"
       redirect_to post_path(notification.notifiable.post_id)
     when "Relationship"
-      redirect_to user_path(notification.notifiable.user_id)
+      redirect_to user_path(notification.notifiable.follower_id)
     else
-      redirect_to user_path(notification.notifiable.id)
+      redirect_to user_path(notification.notifiable.send_user_id)
     end
   end
 end

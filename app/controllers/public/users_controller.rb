@@ -37,6 +37,7 @@ class Public::UsersController < ApplicationController
   def unsubscribe; end
 
   def withdraw
+    @user = User.find(current_user.id)
     current_user.update(is_active: false)
     reset_session
     flash[:notice] = "退会処理を実行いたしました。"
@@ -50,7 +51,7 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :introduction, :last_name, :first_name, :kana_last, :kana_first)
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
   def is_matching_login_user

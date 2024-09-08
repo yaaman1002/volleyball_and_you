@@ -18,8 +18,10 @@ ja:
       attributes:
        email:
         blank: "が空欄です"
+        taken: "はすでに使われています。"
        password:
         blank: "が空欄です"
+        too_short: "が短いです。6文字以上で登録してください。"
   devise:
     confirmations:
       confirmed: "メールアドレスが確認できました。"
