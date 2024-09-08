@@ -14,7 +14,7 @@ class Public::NotificationsController < ApplicationController
     when "Relationship"
       redirect_to user_path(notification.notifiable.user_id)
     else
-      redirect_to user_path(notification.notifiable.user_id)
+      redirect_to user_path(notification.notifiable.id)
     end
   end
 end

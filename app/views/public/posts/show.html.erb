@@ -23,7 +23,9 @@
 
     <div class="row">
       <div class="col-md-3 mt-3 ml-3 pt-2 text-center" style="background-color: #f5a500;">
-        <%= image_tag(@post.get_image, size: "180x180") %>
+        <% @post.images.each do |one_image| %>
+          <%= image_tag(one_image, size: "180x180") %>
+        <% end %>
       </div>
        <div class="col-md-8 ml-4 mt-3" style="background-color: #f5a500;">
         <div class="card-body">

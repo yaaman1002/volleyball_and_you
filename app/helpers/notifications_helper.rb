@@ -7,6 +7,8 @@ module NotificationsHelper
       "#{notification.notifiable.follower.name}さんにフォローされました"
     when "Comment"
       "投稿した#{notification.notifiable.post.title}が#{notification.notifiable.user.name}さんにコメントされました"
+    when "Message"
+      "#{notification.notifiable.send_user.name}さんからメッセージが届きました"
     else
       "投稿した#{notification.notifiable.post.title}が#{notification.notifiable.user.name}さんにいいねされました"
     end

@@ -2,47 +2,36 @@
     <div class="row" style="background-color: #FFF9EE;">
       <div class="text-center col-md-12">
         <h2 class="text-center pt-2 pb-2 mt-3" style="background-color: #84C98B;">ログイン</h2>
-      
+
           <%= form_with model: @user, url: new_user_session_path, id: 'new_user', class: 'new_user' do |f| %>
-      
+
             <div class="field mt-4 mb-4 mr-4">
-              <%= f.label :last_name %>
-              <%= f.text_field :last_name, autofocus: true %>
-      
-              <%= f.label :first_name %>
-              <%= f.text_field :first_name, autofocus: true %>
+              <%= f.label :name %>
+              <%= f.text_field :name, autofocus: true %>
             </div>
-      
-            <div class="field mt-4 mb-4 mr-4">
-              <%= f.label :kana_last %>
-              <%= f.text_field :kana_last, autofocus: true %>
-      
-              <%= f.label :kana_first %>
-              <%= f.text_field :kana_first, autofocus: true %>
-            </div>
-            
+
             <div class="field mt-4 mb-4 mr-4">
               <%= f.label :email %><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
             </div>
-            
+
             <div class="field mt-4 mb-4 mr-4">
               <%= f.label :password %><br />
               <%= f.password_field :password, autocomplete: "current-password" %>
             </div>
-            
+
               <% if devise_mapping.rememberable? %>
             <div class="field mb-4 mr-4">
               <%= f.check_box :remember_me %>
               <%= f.label :remember_me %>
             </div>
               <% end %>
-            
+
             <div class="actions mb-4">
               <%= f.submit "Log in", class: 'btn btn-outline-primary' %>
             </div>
               <% end %>
-        
+
       </div>
     </div>
 </div>
