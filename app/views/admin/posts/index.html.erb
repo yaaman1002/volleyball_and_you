@@ -1,15 +1,12 @@
-<div class="about" style="background-color: #FFF9EE;">
-  <%= flash[:notice] %>
-  <div class="square">
-    <h2 class="text-center">投稿一覧ページ</h2>
-    </div>
-     <div class="container card mt-3 mb-3">
-      <div class="row">
+<div class="container">
+  <div class="row">
+   <div class="col-md-12 text-center" style="background-color: #FFF9EE;">
+    <h2 class="text-center pt-4 pb-4 mt-3" style="background-color: #F067A6;">投稿一覧ページ</h2>
     　　<% @posts.each do |one_post| %>
-          <div class="col-md-2">
+          <div class="col-md-2 pt-4" style="background-color: #CDE6C7;">
             <%= image_tag(one_post.get_image, size: "100x100") %>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 mb-4" style="background-color: #CDE6C7;">
             <div class="card-body">
                 <h6 class="list-group-item"><%= one_post.created_at.strftime('%Y/%m/%d') %></h6>
                 <h5 class="list-group-item font-weight-bold"><%= one_post.title %></h5>
@@ -17,12 +14,12 @@
                 <h6 class="list-group-item"><%= one_post.user.name %></h6>
                 <%= link_to "編集", edit_admin_post_path(one_post), class: 'btn btn-outline-primary' %>
                 <%= link_to "削除", admin_post_path(one_post), class: 'btn btn-outline-danger', method: :delete, 'data-confirm'=>'本当に削除しますか？' %>
-              </div>
             </div>
-            <% end %>
           </div>
-        </div>
-      </div>    
+            <% end %>
+   </div>    
+  </div>
+</div>    
             
           
     

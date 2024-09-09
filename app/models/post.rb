@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :body, presence: true
   validates :body, length: { maximum: 200 }
 
-  # 画像の1舞目のみ対応
+  # 画像の1枚目のみ対応
   def get_image
     unless images.first
       file_path = Rails.root.join('app/assets/images/default-image.jpg')
@@ -41,5 +41,7 @@ class Post < ApplicationRecord
       notifications.create(user_id: follower.id)
     end
   end
+  
+  
 
 end

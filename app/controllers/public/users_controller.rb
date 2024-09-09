@@ -30,7 +30,7 @@ class Public::UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:id])
-    likes = Like.where(id: @user.id).pluck(:id)
+    likes = Like.where(id: @user.id).pluck(:post_id)
     @like_posts = Post.find(likes)
   end
 
