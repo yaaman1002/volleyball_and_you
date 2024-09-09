@@ -1,4 +1,6 @@
 class HomesController < ApplicationController
+  before_action :authenticate_user!, except: [:top, :about]
+  
   def top
     @new_posts=Post.order(created_at: :desc).limit(1)
   end
