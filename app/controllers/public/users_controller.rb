@@ -37,7 +37,7 @@ class Public::UsersController < ApplicationController
   def unsubscribe; end
 
   def withdraw
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
     current_user.update(is_active: false)
     reset_session
     flash[:notice] = "退会処理を実行いたしました。"

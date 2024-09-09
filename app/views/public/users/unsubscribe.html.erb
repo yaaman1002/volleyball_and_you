@@ -4,7 +4,7 @@
     <p class="text-gray-600 my-2">一度退会すると、<br />このアカウントで再度ログインできなくなります。</p>
     <div class="flex items-center justify-center space-x-5">
       <div class="py-8 text-center">
-        <%= link_to withdraw_users_path, data: { "turbo-method": :patch }, class: "px-5 py-2.5 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-md" do %>
+        <%= link_to withdraw_user_path, method: :patch, class: "px-5 py-2.5 focus:outline-none bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-md" do %>
           退会する
         <% end %>
       </div>

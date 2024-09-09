@@ -32,8 +32,8 @@ Rails.application.routes.draw do
 
       resource :messages, only: [:create]
       get 'messages' => 'messages#message', as: 'message'
-      
-      collection do
+
+      member do
         get 'unsubscribe'
         patch 'withdraw'
       end
@@ -49,5 +49,5 @@ Rails.application.routes.draw do
 
   get 'homes/about', as: 'about'
   get 'search', to: 'searches#search'
- 
+
 end
