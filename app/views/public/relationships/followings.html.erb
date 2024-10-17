@@ -7,7 +7,7 @@
             <tr>
               <th>プロフィール</th>
               <th>名前</th>
-              <th></th>
+              <th>メッセージ</th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -16,9 +16,15 @@
             <tr>
               <td>
                 <p><%= image_tag user.get_profile_image(100,100) %></p>
-                <td>
-                  <p><%= user.name %></p>
-                </td>
+              </td>
+              <td>
+                <p><%= user.name %></p>
+              </td>
+              <td>
+                <p><%= link_to user_message_path(user.id) do %>
+                       <i class="fa-regular fa-envelope"></i></p>
+                   <% end %>
+              </td>
             </tr>
             <% end %>
         </tbody>

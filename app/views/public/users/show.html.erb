@@ -1,6 +1,6 @@
-<div class="container-fluid" style="background-color: #FFF9EE;">
+<div class="container-fluid pt-4" style="background-color: #FFF9EE;">
   <div class="row">
-    <div class="col-md-1 ml-4 mr-4" style="background-color: #F9C1CF;">
+    <div class="col-md-2 pt-2 ml-4 mr-4" style="background-color: #F9C1CF;">
       <nav class ="nav-item">
         <%= link_to likes_user_path(@user.id) do %>
           <i class="fa-solid fa-heart"></i>
@@ -20,16 +20,9 @@
         <% end %>
       </nav>
     </div>
-    <div class="square col-md-7" style="background-color: #FAC7C1;">
+    <div class="square col-md-7 pt-2" style="background-color: #FAC7C1;">
      <% if @user.id == current_user.id %>
       <h1>マイページ</h1>
-       <% @relation_users.each do |user| %>
-        <p><%= image_tag user.get_profile_image(70,70) %>
-           <%= user.name %>
-           <%= link_to user_message_path(user.id) do %>
-           <i class="fa-regular fa-envelope"></i></p>
-         <% end %>
-     <% end %>
      <% else %>
        <h1>ユーザー詳細</h1>
      <% end %>
