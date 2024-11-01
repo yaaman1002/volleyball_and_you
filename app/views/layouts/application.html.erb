@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="shortcut icon" href="app/javascript/images/favicon.ico">
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/f9b17be825.js" crossorigin="anonymous"></script>
@@ -61,7 +62,7 @@
               </li>
 
               <li class="dropdown">
-                <button class="btn btn-secoundary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-secoundary dropdown-toggle nav-link text-lite" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Notification
                   <span class="badge badge-danger"><%= current_user.notifications.where(read: false).count %></span>
                 </button>
@@ -133,14 +134,8 @@
     </main>
   </body>
 
-    <footer class="text-center" style="background-color: #afafb0;">
-      <div class="container">
-        <div class="row">
-          <div class="mx-auto">
-                <p>©Volleyball_and_you</p>
-          </div>
-        </div>
-      </div>
+    <footer>
+      <p class="copyright">©Volleyball_and_you</p>
     </footer>
 
 </html>
