@@ -16,12 +16,3 @@ import "../stylesheets/application";
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-
-const text = document.querySelector('.text');
-
-text.classList.add('is-active');
-
-setInterval(() => {
-  text.classList.toggle('is-active');
-}, 3000);

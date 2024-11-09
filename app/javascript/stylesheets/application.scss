@@ -36,38 +36,42 @@ main{
   box-shadow: 20px 12px 12px 0px #0000009e;
 }
 
-.text{
-  overflow: hidden;
-  display: flex;
-  aline-items: center;
-  color: #11b851;
-  font-weight: 700;
-  font-size: 40px;
-  text-transform: uppercase;
+.catchCopy{
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  position: relative;
+  animation: catchCopy .3s 1.0s ease both;
 }
 
-.text.is-active{
-  --y: 0;
-  --rotate: 0;
+@keyframes catchCopy{
+  0%{
+    font-size: 20px;
+  }
+  100%{
+    font-size: 40px;
+  }
 }
 
-.char{
-  display: inline-block;
-  transform: translateY(var(--y, -110%))
-             rotate(var(--rotate, -45deg));
-  transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-  transition-delay: calc(0.02s * var(--char-index));
+.catchCopy::before {
+  content: "";
+  positon: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  animation: catchCopy background-color .3s 1s ease both;
 }
 
-.visuallyHidden{
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  margin: -1px !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  clip: rect(0 0 0 0) !important;
-  border: 0 !important;
+@keyframes catchCopy background-color{
+  0%{
+    right: 100%;
+  }
+
+  100%{
+    right: 0%;
+  }
 }
 
 footer{
