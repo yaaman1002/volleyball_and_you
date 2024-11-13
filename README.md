@@ -26,7 +26,7 @@
 
 
 ## 開発環境
-・ OS:Linux(CentOS)
+・ OS: Amazon Linux release 2023.4.20240401 (Amazon Linux)
 ・ 言語：HTML,CSS,JavaScript,Ruby,SQL
 ・ フレームワーク：Ruby on Rails
 ・ JSライブラリ：jQuery
